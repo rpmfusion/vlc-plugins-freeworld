@@ -1,12 +1,12 @@
 %{?!vlc_plugindir:%global vlc_plugindir %{_libdir}/vlc/plugins}
 
 Name:		vlc-plugins-freeworld
-Version:	3.0.20
-Release:	3%{?dist}
+Version:	3.0.21
+Release:	1%{?dist}
 Summary:	AAC, H.264, and HEVC codec plugins for VLC media player
 License:	GPL-2.0-or-later AND LGPL-2.1-or-later AND BSD-2-Clause AND BSD-3-Clause
 URL:		https://www.videolan.org
-Source:		https://get.videolan.org/vlc/%{version}/vlc-%{version}.tar.xz
+Source:		https://download.videolan.org/pub/videolan/vlc/%{version}/vlc-%{version}.tar.xz
 
 %global __provides_exclude_from ^%{vlc_plugindir}/.*$
 
@@ -35,14 +35,12 @@ Supplements:	vlc-plugins-base%{?_isa} >= 1:%{version}
 
 %prep
 %autosetup -n vlc-%{version} -p1
-
 rm -f aclocal.m4 m4/lib*.m4 m4/lt*.m4
-./bootstrap
-
-touch src/revision.txt
-
 
 %build
+./bootstrap
+touch src/revision.txt
+
 %configure				\
     --disable-silent-rules		\
     --disable-dependency-tracking	\
@@ -227,6 +225,9 @@ find %{buildroot}%{_libdir} -name '*.la' -delete
 
 
 %changelog
+* Thu Jun 06 2024 Sérgio Basto <sergio@serjux.com> - 3.0.21-1
+- Update vlc-plugins-freeworld to 3.0.21
+
 * Sat Apr 06 2024 Leigh Scott <leigh123linux@gmail.com> - 3.0.20-3
 - Rebuild for new x265 version
 
