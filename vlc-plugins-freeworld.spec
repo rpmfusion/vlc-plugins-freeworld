@@ -24,7 +24,7 @@ BuildRequires:	faad2-devel
 BuildRequires:	pkgconfig(x264) >= 0.153
 BuildRequires:	pkgconfig(x265)
 
-BuildRequires:	vlc-devel = 1:%{version}
+BuildRequires:	vlc-devel
 
 Requires:	vlc-libs%{?_isa} >= 1:%{version}
 Supplements:	vlc-plugins-base%{?_isa} >= 1:%{version}
