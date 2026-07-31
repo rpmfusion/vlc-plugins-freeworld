@@ -2,7 +2,7 @@
 
 Name:		vlc-plugins-freeworld
 Version:	3.0.22
-Release:	3%{?dist}
+Release:	4%{?dist}
 Summary:	H.264, and HEVC codec plugins for VLC media player
 License:	GPL-2.0-or-later AND LGPL-2.1-or-later
 URL:		https://www.videolan.org
@@ -223,6 +223,9 @@ find %{buildroot}%{_libdir} -name '*.la' -delete
 
 
 %changelog
+* Fri Jul 31 2026 Leigh Scott <leigh123linux@gmail.com> - 3.0.22-4
+- Rebuild for new x265
+
 * Mon Apr 20 2026 Leigh Scott <leigh123linux@gmail.com> - 3.0.22-3
 - Rebuild for new x265
 
