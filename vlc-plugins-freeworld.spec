@@ -1,7 +1,7 @@
 %{?!vlc_plugindir:%global vlc_plugindir %{_libdir}/vlc/plugins}
 
 Name:		vlc-plugins-freeworld
-Version:	3.0.23
+Version:	3.0.24
 Release:	1%{?dist}
 Summary:	H.264, and HEVC codec plugins for VLC media player
 License:	GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -113,12 +113,11 @@ touch src/revision.txt
     --disable-theora			\
     --disable-oggspots			\
     --disable-daala			\
-    --disable-schroedinger		\
     --disable-png			\
     --disable-jpeg			\
     --disable-bpg			\
     --disable-x262			\
-    --disable-mfx			\
+    --disable-vpl			\
     --disable-fluidsynth		\
     --disable-fluidlite			\
     --disable-zvbi			\
@@ -154,7 +153,6 @@ touch src/revision.txt
     --disable-chromecast		\
     --disable-qt			\
     --disable-skins2			\
-    --disable-libtar			\
     --disable-lirc			\
     --disable-srt			\
     --disable-goom			\
@@ -175,8 +173,9 @@ touch src/revision.txt
     --disable-notify			\
     --disable-libplacebo		\
     --without-kde-solid			\
-    --without-vlc			\
-    %{nil}
+    --disable-vlc			\
+    --disable-librist			\
+    %{nil} VLC_COMPILE_HOST=%{_buildhost}
 
 # clean unused-direct-shlib-dependencies
 sed -i -e 's! -shared ! -Wl,--as-needed\0!g' libtool
@@ -223,6 +222,12 @@ find %{buildroot}%{_libdir} -name '*.la' -delete
 
 
 %changelog
+* Thu Sep 24 2026 Dominik Mierzejewski <dominik@greysector.net> - 3.0.24-1
+- update to 3.0.24
+- drop removed configure options
+- add new autodetected features to disable list
+- work around missing hostname command
+
 * Mon Sep 14 2026 Dominik Mierzejewski <dominik@greysector.net> - 3.0.23-1
 - update to 3.0.23
 
